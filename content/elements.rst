@@ -11,7 +11,8 @@ Program Library
 The main executable programs within the AEM program library are:
 
     - **AEMesh:** creates a global OcTree mesh for the inversion based on the survey geometry and a set of small OcTree meshes about the transmitters
-    - **AEM:** predicts data for a conductivity model
+    - **blk3cellOct:** creates a conductivity model on the OcTree mesh
+    - **AEM:** Single executable file for carrying out forward modeling and inversion of FEM data
 
 Also included are the following Octree utility programs:
 
@@ -51,6 +52,8 @@ Here, we describe the formats of supporting files used to run **AEM.exe**. The i
     Survey Index File <files/indexFile>
     Observations File <files/obsFile>
     Predicted Data File <files/preFile>
+    Frequencies File <files/freqFile>
+    Transmitter/Receiver File <files/receiverFile>
     Topography File <files/topoFile>
     Tensor Mesh File <files/tensor_mesh>
     Octree Mesh File <files/octree_mesh>

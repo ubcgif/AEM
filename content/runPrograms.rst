@@ -17,8 +17,9 @@ This section provides describes how to run all executables pertaining to the AEM
 
 The main executable programs within the AEM program library are:
 
-    - **AEMesh:** creates an OcTree mesh based on the survey geometry
-    - **AEM:** predicts data for a conductivity model
+    - **AEMesh:** creates a global OcTree mesh for the inversion based on the survey geometry and a set of small OcTree meshes about the transmitters
+    - **blk3cellOct:** creates a conductivity model on the OcTree mesh
+    - **AEM:** Single executable file for carrying out forward modeling and inversion of FEM data
 
 Also included are the following Octree utility programs:
 

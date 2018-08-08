@@ -188,8 +188,8 @@ Line Descriptions
 
 .. _aem_input_inv2_ln24:
 
-    - **Phase Convention:** If the predicted/observed data have a sign convention :math:`e^{+i \omega t}` use the flag 'PLUS_IOMEGA'. If the predicted/observed data have a sign convention :math:`e^{-i \omega t}` use the flag 'MINUS_IOMEGA'.
+    - **PCT_FACT:** percentage of tiles (local meshes) for which the sensitivities will be calculated (use 1 for airborne). **MORE DETAILS NEEDED**
 
-.. _aem_input_inv2_ln24:
+.. _aem_input_inv2_ln25:
 
-
+    - **Tile file:** USE_ALL_TILES
