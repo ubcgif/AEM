@@ -35,13 +35,19 @@ Output Files
 
 The program **AEM.exe** creates the following output files:
 
-    - **inv.con:** recovered conductivity models
+    - **inv.con:** recovered conductivity model for the final beta value
 
-    - **dpred.txt** predicted data for each recovered conductivity model
+    - **inv_n.con:** recovered conductivity model for the nth beta value
 
-    - **AEM.log:** log file for the inversion
+    - **dpred0.txt** predicted data for the initial model
 
-    - **AEM.out:**
+    - **dpredn.txt** predicted data for the nth beta value
+
+    - **dpred.txt** predicted data for final recovered model
+
+    - **e3d octree inv tiles.log:** log file for the inversion
+
+    - **e3d octree inv tiles.out:** inversion summary
 
 
 

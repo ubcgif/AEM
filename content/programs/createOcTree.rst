@@ -20,11 +20,11 @@ The program **octree_mesh_mt.exe** creates 5 output files:
 
     - **3D_core_mesh.txt:** a 3D regular :ref:`tensor mesh<tensorFile>` defining the core region of the inversion mesh. 
 
-    - **octree_mesh.txt:** the inversion :ref:`OcTree mesh<octreeFile>`.
+    - **octree_mesh.txt:** the global inversion :ref:`OcTree mesh<octreeFile>`.
 
     - **active_cells_topo.txt:** an :ref:`active cells model<modelFile>` on the inversion mesh which defines the topography. Cells are active (underground) if assigned a value of 1 and inactive (in the air) if assigned a value of 0.
 
-    - **octree_small_mesh.dat:** a binary data file containing the forward meshes for all transmitters.
+    - **octree_small_mesh.dat:** a binary data file containing the local forward meshes for all transmitters.
 
     - **AEMesh.log:** log file
 
