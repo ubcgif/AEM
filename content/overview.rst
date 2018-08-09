@@ -8,8 +8,8 @@ Description
 
 This manual provides instruction and background for the AEM program library for the forward
 modelling and inversion of frequency domain electromagnetic survey data. New to this
-program is the ability to create many small meshes on which to solve the EM forward problems
-in parallel. The AEM mesh generation code is parallelized with OpenMP and is meant to run on
+program is the ability to create many small local meshes on which to solve the EM forward problems
+for each transmitter in parallel. The AEM mesh generation code is parallelized with OpenMP and is meant to run on
 a single node. It will use as many threads as available, or the user can use the **OMP_NUM_THREADS**
 environment variable to indicate the number of threads.
 
@@ -22,8 +22,7 @@ environment variable to indicate the number of threads.
 
 
 In order to decrease computational time and increase accuracy by mesh refinement in areas of interest, models
-are discretized on an Octree mesh. 
-For ease of use the program library includes several utilities which generate a regular base mesh, enabling the user to construct initial or simulation models on
+are discretized on an Octree mesh. For ease of use the program library includes several utilities which generate a regular base mesh, enabling the user to construct initial or simulation models on
 a regular mesh and then convert to an octree mesh. From the users point of view the software
 operates in much the same way as previous GIF codes. This version is currently run through the
 command line only.
@@ -61,7 +60,7 @@ with AEM. These include:
 
   - Surface and below surface topography cell size control. This allows the user to generate a mesh with refined cells near the surface of the topography to better capture features.
 
-  - Small meshes are generated and focused around each source/receiver so that the forward problem can be split into many small problems and solved in parallel. The solutions are then interpolated back to the large base octree mesh. The user can specify the depth of each forward mesh, the number of cells surrounding source/receivers, and expand the polygon around the data.
+  - Small (tile) meshes are generated and focused around each source/receiver so that the forward problem can be split into many small problems and solved in parallel. The solutions are then interpolated back to the large base octree mesh. The user can specify the depth of each tile mesh, the number of cells surrounding source/receivers, and expand the polygon around the data.
 
   - A more versatile format for survey and observations files
 
@@ -71,16 +70,15 @@ AEM Program Library Content
 
 The main executable programs within the AEM program library are:
 
-    - **AEMesh:** creates a global OcTree mesh for the inversion based on the survey geometry and a set of small OcTree meshes about the transmitters
+    - **AEMesh:** creates a global OcTree mesh for the inversion based on the survey geometry and a set of local OcTree meshes about each transmitter and its receivers
     - **blk3cellOct:** creates a conductivity model on the OcTree mesh
     - **AEM:** Single executable file for carrying out forward modeling and inversion of FEM data
 
 Also included are the following Octree utility programs:
 
       - extract_mesh
-      - interface_weights
       - create_weight_file
-      - face_weights
+      - interface_weights
       - octree_cell_centre
       - octreeTo3D
       - refine_octree

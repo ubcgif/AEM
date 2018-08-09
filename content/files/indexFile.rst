@@ -5,21 +5,24 @@ Survey Index File
 
 This file is input when forward modeling data. Using 4 columns, the observation file indexes the frequencies, transmitters and receivers used for each measurement. Each row defines a unique field measurement. The general format is as follows:
 
-.. note:: Blue hyperlinked entries are values specified by the user
-
-.. important::
-    **ORDERING OF INDICIES**
-
 
 | :ref:`tx_ind<aem_survey_ln1>` :math:`\;` :ref:`f_ind<aem_survey_ln2>` :math:`\;` :ref:`rx_ind<aem_survey_ln3>` :math:`\;` :ref:`data_opt<aem_survey_ln4>`
 | :ref:`tx_ind<aem_survey_ln1>` :math:`\;` :ref:`f_ind<aem_survey_ln2>` :math:`\;` :ref:`rx_ind<aem_survey_ln3>` :math:`\;` :ref:`data_opt<aem_survey_ln4>`
 | :ref:`tx_ind<aem_survey_ln1>` :math:`\;` :ref:`f_ind<aem_survey_ln2>` :math:`\;` :ref:`rx_ind<aem_survey_ln3>` :math:`\;` :ref:`data_opt<aem_survey_ln4>`
-| :math:`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; \vdots`
+| :math:`\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; \vdots`
 | :ref:`tx_ind<aem_survey_ln1>` :math:`\;` :ref:`f_ind<aem_survey_ln2>` :math:`\;` :ref:`rx_ind<aem_survey_ln3>` :math:`\;` :ref:`data_opt<aem_survey_ln4>`
 |
 |
 
-where
+
+.. important:: 
+    Due to the way the forward problem is solved, it is imperative that the user sort the survey index file:
+        - First by frequency
+        - Next by transmitter
+        - Then finally by receiver
+
+
+**Parameter Descriptions**
 
 
 .. _aem_survey_ln1:
@@ -37,7 +40,6 @@ where
 .. _aem_survey_ln4:
 
     - **1:** As of May 2018, a flag value of 1 is entered here. In future iterations of the code, this entry may be related to additional functionality.
-
 
 
 

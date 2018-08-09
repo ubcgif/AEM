@@ -3,17 +3,17 @@
 Create OcTree Tile Mesh Input File
 ==================================
 
-:ref:`OcTree meshes<octreeFile>` used in the AEM code are created using the program **AEMesh.exe**. This includes the inversion mesh (the global mesh on which the model lives) and a set of forward meshes (local OcTree meshes for each transmitter). Parameters necessary for creating all of the OcTree meshes are set in the input file. The lines within the input file are as follows:
+:ref:`OcTree meshes<octreeFile>` used in the AEM code are created using the program **AEMesh.exe**. This includes a global mesh (the mesh for which the inverse problem is solved) and a set of local meshes (OcTree meshes use to solve the set of forward problems). Parameters necessary for creating all of the OcTree meshes are set in the input file. The lines within the input file are as follows:
 
 
-.. important:: This code has parameters which define the global mesh used in the inversion (where the recovered model lives) **and** parameters defining the local meshes where the forward problem is solved for each transmitter. The former will be referred to as the **inversion mesh** and the latter will be referred to as the **forward mesh**.
+.. important:: This code has parameters which define the global mesh used in the inversion (where the recovered model lives) **and** parameters defining the local meshes where the forward problem is solved for each transmitter. The former will be referred to as the **global inversion mesh** and the latter will be referred to as **local forward meshes**.
 
 
 .. tabularcolumns:: |C|C|C|
 
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
 | Line # | Parameter                                                                | Descriptions                                                      |
-+========+==========================================================+===================================================================================+
++========+==========================================================================+===================================================================+
 | 1      |:ref:`dx dy dz<aem_input_octreeln1>`                                      | min. cell widths in x, y and z for base mesh                      |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
 | 2      |:ref:`min_cell_fact min_cell_size_fwd max_topo_cell<aem_input_octreeln2>` | additional cell size parameters                                   |
@@ -38,7 +38,7 @@ Create OcTree Tile Mesh Input File
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
 | 12     |:ref:`polygon edge width<aem_input_octreeln12>`                           | sets horizontal extent of core region for the inversion mesh      |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
-| 13     |:ref:`read/create mesh<aem_input_octreeln13>`                             | read in or create inversion mesh                                  |
+| 13     |:ref:`read/create mesh<aem_input_octreeln13>`                             | read in or create global inversion mesh                           |
 +--------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 
@@ -60,24 +60,24 @@ Line Descriptions
 
 .. _aem_input_octreeln2:
 
-    - **min_cell_fact min_cell_size_fwd max_topo_cell:** These parameters determine the rate of cell expansion for regions near topography and for the forward meshes.
+    - **min_cell_fact min_cell_size_fwd max_topo_cell:** These parameters determine the rate of cell expansion for regions near topography and for the local forward meshes.
 
-        - **min_cell_fact:** Defines the rate of topography-based cell size increase on the inversion mesh with respect to depth. After each layer of *N* cells, the cell size will increase by a factor of 2 until a maximum cell size (*max_topo_cell*) is reached. *N* must be an integer value that is a power of 2.
-        - **min_cell_size_fwd:** This sets the minimum cell size for the forward meshes. A value of 2 means the minimum cell size in the local mesh has a side width of 2 times the base mesh cell size. This parameter must be an integer value that is a power of 2.
-        - **max_topo_cell:** This determines the maximum cell size for which topography-based cell size increase is used on the inversion mesh; after which typical OcTree cell expansion is used. This parameter must be an integer value that is a power of 2.
+        - **min_cell_fact:** Defines the rate of topography-based cell size increase on the global inversion mesh with respect to depth. After each layer of *N* cells, the cell size will increase by a factor of 2 until a maximum cell size (*max_topo_cell*) is reached. *N* must be an integer value that is a power of 2.
+        - **min_cell_size_fwd:** This sets the minimum cell size for the local forward meshes. A value of 2 means the minimum cell size in the local mesh has a side width of 2 times the base mesh cell size. This parameter must be an integer value that is a power of 2.
+        - **max_topo_cell:** This determines the maximum cell size for which topography-based cell size increase is used on the global inversion mesh; after which typical OcTree cell expansion is used. This parameter must be an integer value that is a power of 2.
 
 .. _aem_input_octreeln3:
 
-    - **x_pad y_pad down_pad up_pad:** Distance from the core mesh region in the x, y, downward and upward directions, respectively, that the inversion mesh extends.
+    - **x_pad y_pad down_pad up_pad:** Distance from the core mesh region in the x, y, downward and upward directions, respectively, that the global inversion mesh extends.
 
 .. _aem_input_octreeln4:
 
-    - **dist_inv_1 dist_inv_2 dist_inv_3:** For the inversion mesh, these parameters set the discretization of the core mesh region (i.e. the region near the transmitters and receivers) in terms of depth. Up to a depth of *dist_inv_1* from the surface, the smallest cell size is used (set by *dx, dy, dz*). For the following *dist_inv_2* metres, a cell width 2 times large is used. For the following *dist_inv_3* metres, the cell width is doubled again. Below the third depth region, the cells widths increase by a factor of 2 for every additional layer (see the figure below).
+    - **dist_inv_1 dist_inv_2 dist_inv_3:** For the global inversion mesh, these parameters set the discretization of the core mesh region (i.e. the region near the transmitters and receivers) in terms of depth. Up to a depth of *dist_inv_1* from the surface, the smallest cell size is used (set by *dx, dy, dz*). For the following *dist_inv_2* metres, a cell width 2 times large is used. For the following *dist_inv_3* metres, the cell width is doubled again. Below the third depth region, the cells widths increase by a factor of 2 for every additional layer (see the figure below).
 
 
 .. _aem_input_octreeln5:
 
-    - **dist_fwd_1 dist_fwd_2 dist_fwd_3:** For the forward meshes, these parameters set the discretization of the core mesh region (i.e. the region near the transmitter and receivers) in terms of depth. Up to a depth of *dist_fwd_1* from the surface, the smallest cell size is used (set by *dx, dy, dz*). For the following *dist_fwd_2* metres, a cell width 2 times large is used. For the following *dist_fwd_3* metres, the cell width is doubled again. Below the third depth region, the cells widths increase by a factor of 2 for every additional layer (see the figure below).
+    - **dist_fwd_1 dist_fwd_2 dist_fwd_3:** For the local forward meshes, these parameters set the discretization of the core mesh region (i.e. the region near the transmitter and receivers) in terms of depth. Up to a depth of *dist_fwd_1* from the surface, the smallest cell size is used (set by *dx, dy, dz*). For the following *dist_fwd_2* metres, a cell width 2 times large is used. For the following *dist_fwd_3* metres, the cell width is doubled again. Below the third depth region, the cells widths increase by a factor of 2 for every additional layer (see the figure below).
 
 .. _aem_input_octreeln6:
 
@@ -109,7 +109,7 @@ Line Descriptions
 
 .. _aem_input_octreeln13:
 
-    - **read/create mesh:** If the inversion mesh has already been created, then it may be loaded by typing "READ_LARGE_MESH *filepath*". In this case, the inversion mesh is used to define the forward meshes. If the inversion mesh needs to be created, the user types "CREATE_LARGE_MESH *filename*", where the inversion mesh is output to the file *filename*.
+    - **read/create mesh:** If the global inversion mesh has already been created, then it may be loaded by typing "READ_LARGE_MESH *filepath*". In this case, the global inversion mesh is used to define the local forward meshes. If the global inversion mesh needs to be created, the user types "CREATE_LARGE_MESH *filename*", where the global inversion mesh is output to the file *filename*.
 
 
 

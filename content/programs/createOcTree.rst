@@ -24,7 +24,7 @@ The program **octree_mesh_mt.exe** creates 5 output files:
 
     - **active_cells_topo.txt:** an :ref:`active cells model<modelFile>` on the inversion mesh which defines the topography. Cells are active (underground) if assigned a value of 1 and inactive (in the air) if assigned a value of 0.
 
-    - **octree_small_mesh.dat:** a hexidecimal data file containing the forward meshes for all transmitters.
+    - **octree_small_mesh.dat:** a binary data file containing the forward meshes for all transmitters.
 
     - **AEMesh.log:** log file
 

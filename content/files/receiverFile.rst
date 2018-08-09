@@ -3,7 +3,7 @@
 Transmitter and Receiver Files
 ==============================
 
-The exact dimensions of the transmitters or receivers used to measure FEM data are defined within a transmitter or a receiver file, respectively; i.e. transmitters are defined within a transmitter file and receivers are defined within a receivers file. Because transmitters and receivers are both defined as closed loops made up of wire segments, the format of the transmitter and receiver files is identical.
+The exact dimensions of the transmitters or receivers used to model FEM data are defined within a transmitter or a receiver file, respectively; i.e. transmitters are defined within a transmitter file and receivers are defined within a receivers file. Because transmitters and receivers are both defined as closed loops made up of wire segments, the format of the transmitter and receiver files is identical.
 
 .. note::
     - Bolded entries are fixed flags recognized by the Fortran codes and blue hyperlinked entries are values/regular expressions specified by the user
@@ -16,15 +16,15 @@ The lines of a transmitter/receiver file are formatted as follows:
 
 
 |
-| :ref:`RxID<e3dmt_rec_ln1>` :math:`\;` :ref:`N<e3dmt_rec_ln2>` :math:`\;` :ref:`1<e3dmt_rec_ln3>`
+| :ref:`ID<e3dmt_rec_ln1>` :math:`\;` :ref:`N<e3dmt_rec_ln2>` :math:`\;` :ref:`1<e3dmt_rec_ln3>`
 | :math:`\;\;\; x_1 \; y_1 \; z_1`
 | :math:`\;\;\;\;\;\;\;\; \vdots`
 | :math:`\;\; x_N \; y_N \; z_N`
-| :ref:`RxID<e3dmt_rec_ln1>` :math:`\;` :ref:`N<e3dmt_rec_ln2>` :math:`\;` :ref:`1<e3dmt_rec_ln3>`
+| :ref:`ID<e3dmt_rec_ln1>` :math:`\;` :ref:`N<e3dmt_rec_ln2>` :math:`\;` :ref:`1<e3dmt_rec_ln3>`
 | :math:`\;\;\; x_1 \; y_1 \; z_1`
 | :math:`\;\;\;\;\;\;\;\; \vdots`
 | :math:`\;\; x_N \; y_N \; z_N`
-| :ref:`RxID<e3dmt_rec_ln1>` :math:`\;` :ref:`N<e3dmt_rec_ln2>` :math:`\;` :ref:`1<e3dmt_rec_ln3>`
+| :ref:`ID<e3dmt_rec_ln1>` :math:`\;` :ref:`N<e3dmt_rec_ln2>` :math:`\;` :ref:`1<e3dmt_rec_ln3>`
 | :math:`\;\;\; x_1 \; y_1 \; z_1`
 | :math:`\;\;\;\;\;\;\;\; \vdots`
 | :math:`\;\; x_N \; y_N \; z_N`

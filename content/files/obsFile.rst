@@ -9,8 +9,6 @@ This file is input when forward modeling or inverting field-collected data. Usin
     - Blue hyperlinked entries are values specified by the user
     - To omit a particular datum in the inversion, used the flag **-99** on its corresponding uncertainty.
 
-.. important::
-    **ORDERING OF INDICIES**
 
 
 | :ref:`tx_ind<aem_obs_ln1>` :math:`\;` :ref:`f_ind<aem_obs_ln2>` :math:`\;` :ref:`rx_ind<aem_obs_ln3>` :math:`\;` :ref:`data_opt<aem_obs_ln4>` :math:`\;` :ref:`data_real<aem_obs_ln5>` :math:`\;` :ref:`unc_real<aem_obs_ln6>` :math:`\;` :ref:`data_imag<aem_obs_ln7>` :math:`\;` :ref:`unc_imag<aem_obs_ln8>`
@@ -21,7 +19,14 @@ This file is input when forward modeling or inverting field-collected data. Usin
 |
 |
 
-where
+.. important:: 
+    Due to the way the forward problem is solved, it is imperative that the user sort the observations:
+        - First by frequency
+        - Next by transmitter
+        - Then finally by receiver
+
+
+**Parameter Descriptions**
 
 
 .. _aem_obs_ln1:

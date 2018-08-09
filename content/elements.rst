@@ -10,18 +10,17 @@ Program Library
 
 The main executable programs within the AEM program library are:
 
-    - **AEMesh:** creates a global OcTree mesh for the inversion based on the survey geometry and a set of small OcTree meshes about the transmitters
+    - **AEMesh:** creates a global OcTree mesh for the inversion based on the survey geometry and a set of local OcTree meshes about each transmitter and its receivers
     - **blk3cellOct:** creates a conductivity model on the OcTree mesh
     - **AEM:** Single executable file for carrying out forward modeling and inversion of FEM data
 
 Also included are the following Octree utility programs:
 
-    - **extract_mesh:** 
-    - **interface_weights:** 
-    - **create_weight_file:** creates the weighting on each cell in the model
-    - **face_weights:** creates weights on the faces of cells
+    - **extract_mesh:** extracts a specified local OcTree mesh from a hexidecimal file containing all local meshes
+    - **create_weight_file:** creates cell weighting for the recovered model
+    - **interface_weights:** creates weights on the faces of cells for the recovered model
     - **octree_cell_centre:** computes the cell centres of each octree cell
-    - **octreeTo3D:** converts and octree mesh to a 3D base mesh
+    - **octreeTo3D:** converts an OcTree model from its OcTree mesh to the underlying 3D base mesh
     - **refine_octree:** refine the octrees
     - **remesh_octree_model:** converts the octree model to base mesh
 
