@@ -17,8 +17,8 @@ This file is input when forward modeling data. Using 4 columns, the observation 
 
 .. important:: 
     Due to the way the forward problem is solved, it is imperative that the user sort the survey index file:
-        - First by frequency
-        - Next by transmitter
+        - First by transmitter
+        - Next by frequency
         - Then finally by receiver
 
 

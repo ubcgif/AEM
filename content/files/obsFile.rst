@@ -21,8 +21,8 @@ This file is input when forward modeling or inverting field-collected data. Usin
 
 .. important:: 
     Due to the way the forward problem is solved, it is imperative that the user sort the observations:
-        - First by frequency
-        - Next by transmitter
+        - First by transmitter
+        - Next by frequency
         - Then finally by receiver
 
 
